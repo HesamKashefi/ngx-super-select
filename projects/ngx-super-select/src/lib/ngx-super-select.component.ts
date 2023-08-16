@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { NgSuperSelectOptions } from './ngx-super-select-options';
+import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefulats } from './ngx-super-select-options';
 
 @Component({
   selector: 'lib-ngx-super-select',
@@ -15,14 +15,14 @@ export class NgxSuperSelectComponent {
   @Input()
   dataSource: any[] = [];
 
+  _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefulats;
   @Input()
-  options: NgSuperSelectOptions = {
-    actionsEnabled: true,
-    displayExpr: '',
-    valueExpr: '',
-    placeholder: 'Select',
-    searchEnabled: true
+  set options(value: NgxSuperSelectOptions) {
+    this._options = value;
   };
+  get options(): NgxSuperSelectOptions {
+    return this._options;
+  }
 
   @Input()
   selectedItemValues: number[] = [];
@@ -100,10 +100,10 @@ export class NgxSuperSelectComponent {
   }
 
   getName(obj: any): string {
-    return Object.getOwnPropertyDescriptors(obj)[this.options.displayExpr]?.value;
+    return Object.getOwnPropertyDescriptors(obj)[this.options.displayExpr]?.value || obj;
   }
 
   getValue(obj: any): number {
-    return +Object.getOwnPropertyDescriptors(obj)[this.options.valueExpr]?.value;
+    return +Object.getOwnPropertyDescriptors(obj)[this.options.valueExpr]?.value || obj;
   }
 }

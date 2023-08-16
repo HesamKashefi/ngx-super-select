@@ -1,4 +1,4 @@
-export class NgSuperSelectOptions {
+export class NgxSuperSelectOptions {
     actionsEnabled = true;
     searchEnabled = true;
     placeholder = '';
@@ -9,3 +9,11 @@ export class NgSuperSelectOptions {
 
     }
 }
+
+export const NgxSuperSelectOptionsDefulats = {
+    actionsEnabled: true,
+    displayExpr: '',
+    valueExpr: '',
+    placeholder: 'Select',
+    searchEnabled: true
+};
