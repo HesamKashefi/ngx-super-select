@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
 import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefulats } from './ngx-super-select-options';
 
 @Component({
-  selector: 'lib-ngx-super-select',
+  selector: 'ngx-super-select',
   templateUrl: './ngx-super-select.component.html',
   styleUrls: ['./ngx-super-select.component.scss']
 })
@@ -18,7 +18,7 @@ export class NgxSuperSelectComponent {
   _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefulats;
   @Input()
   set options(value: NgxSuperSelectOptions) {
-    this._options = value;
+    this._options = { ...NgxSuperSelectOptionsDefulats, ...value };
   };
   get options(): NgxSuperSelectOptions {
     return this._options;
