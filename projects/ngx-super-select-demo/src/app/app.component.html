@@ -1,16 +1,30 @@
 <section>
-    <h1>ngx-super-select</h1>
+  <h1>ngx-super-select</h1>
 
-    <h5>Primitive Type Data:</h5>
-    <ngx-super-select [dataSource]="[1,2,3]">
+  <h5>Primitive Type Data:</h5>
+  <ngx-super-select [dataSource]="[1,2,3]">
 
-    </ngx-super-select>
+  </ngx-super-select>
 
-    <hr>
+  <hr>
 
-    <h5>Object Data:</h5>
+  <h5>Object Data:</h5>
+  <ngx-super-select [dataSource]="data"
+                    [options]="options">
+
+  </ngx-super-select>
+
+  <hr>
+
+  <h5>In the form:</h5>
+  <form [formGroup]="form"
+        (submit)="onFormSubmit()">
     <ngx-super-select [dataSource]="data"
-                      [options]="options">
+                      [options]="options"
+                      formControlName="names">
 
     </ngx-super-select>
+    <button type="submit"
+            class="btn btn-primary my-2">Submit</button>
+  </form>
 </section>
