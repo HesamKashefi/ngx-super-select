@@ -1,0 +1,53 @@
+<div class="select-box"
+     [class.open]="isOpen"
+     (click)="onBoxClicked($event)">
+
+    <span>{{ options.placeholder }}</span>
+    <span *ngIf="selectedItemValues.length > 0"
+          class="mx-2 text-danger">{{ selectedItemValues.length }}</span>
+
+    <div class="select-popup"
+         [class.open]="isOpen"
+         (click)="onPopupClicked($event)">
+
+        <div class="select-popup-control-panel">
+            <div *ngIf="options.actionsEnabled"
+                 class="actions">
+                <button class="btn btn-outline-primary btn-sm"
+                        (click)="onSelectAllClicked($event)">
+                    All
+                </button>
+                <button class="btn btn-outline-primary btn-sm"
+                        (click)="onInvertSelectionClicked($event)">
+                    Invert
+                </button>
+                <button class="btn btn-outline-danger btn-sm"
+                        (click)="onClearClicked($event)">
+                    Clear
+                </button>
+            </div>
+
+            <hr *ngIf="options.actionsEnabled">
+
+            <input *ngIf="options.searchEnabled"
+                   type="text"
+                   id="searchBox"
+                   class="form-control form-control-sm mx-auto"
+                   style="width: 95%;"
+                   placeholder="search"
+                   [(ngModel)]="searchText"
+                   autocomplete="off">
+
+            <hr *ngIf="options.searchEnabled">
+        </div>
+
+        <div class="select-popup-options">
+            <div *ngFor="let item of getFilteredItems()"
+                 class="select-option"
+                 [class.selected]="isSelected(item)"
+                 (click)="onItemClicked($event, item)">
+                {{ getName(item) }}
+            </div>
+        </div>
+    </div>
+</div>
