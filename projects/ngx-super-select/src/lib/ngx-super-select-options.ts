@@ -4,10 +4,6 @@ export class NgxSuperSelectOptions {
     placeholder = '';
     displayExpr = '';
     valueExpr = '';
-
-    constructor() {
-
-    }
 }
 
 export const NgxSuperSelectOptionsDefulats = {

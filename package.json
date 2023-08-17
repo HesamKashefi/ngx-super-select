@@ -8,6 +8,13 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "author": {
+    "name": "Hesam Kashefi",
+    "url": "https://hesamkashefi.com"
+  },
+  "repository": {
+    "url": "https://github.com/HesamKashefi/ngx-super-select"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.0",

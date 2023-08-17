@@ -1,24 +1,74 @@
 # NgxSuperSelect
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+This is a multi choice drop down for Angular
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name --project ngx-super-select` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-super-select`.
-> Note: Don't forget to add `--project ngx-super-select` or else it will be added to the default project in your `angular.json` file. 
+### Install bootstrap
+First we need bootstrap installed. (If you have it already installed, you can skip to the next section).
 
-## Build
+```
+> npm i bootstrap
+```
 
-Run `ng build ngx-super-select` to build the project. The build artifacts will be stored in the `dist/` directory.
+In the `angular.json` file in the 
+```
+projects:`YOUR_APPLICATION_NAME`:architect:options:styles 
+```
+add this:
 
-## Publishing
+`"node_modules/bootstrap/dist/css/bootstrap.min.css"`
 
-After building your library with `ng build ngx-super-select`, go to the dist folder `cd dist/ngx-super-select` and run `npm publish`.
+### Install NgxSuperSelect
+```
+> npm i ngx-super-select
+```
 
-## Running unit tests
+## Add Imports
 
-Run `ng test ngx-super-select` to execute the unit tests via [Karma](https://karma-runner.github.io).
+in the `app.module.ts` file import `NgxSuperSelectModule` like this:
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  imports: [
+    ...
+    NgxSuperSelectModule
+  ]
+
+```
+
+## Usage
+
+You can use it as simple as this:
+```
+ <ngx-super-select [dataSource]="[1,2,3]">
+ </ngx-super-select>
+```
+
+if you have complex object data then you need to set options:
+
+in your component.ts file
+```
+
+data: { name: string }[] = [
+    { name: 'hesam' },
+    { name: 'kashefi' }
+];
+
+options: NgxSuperSelectOptions = {
+    actionsEnabled: true,
+    displayExpr: 'name',
+    valueExpr: 'name',
+    placeholder: 'select',
+    searchEnabled: true
+}
+
+```
+in your component.html file:
+```
+<ngx-super-select [dataSource]="data"
+                    [options]="options">
+
+</ngx-super-select>
+
+  ```
