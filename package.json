@@ -15,6 +15,21 @@
   "repository": {
     "url": "https://github.com/HesamKashefi/ngx-super-select"
   },
+  "keywords": [
+    "NgxSuperSelect",
+    "ngx-super-select",
+    "select",
+    "multi select",
+    "dropdown",
+    "multi choice",
+    "multiple choices",
+    "multi selection",
+    "multiple selection",
+    "selectbox",
+    "select search",
+    "select all",
+    "angular"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.0",

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NgxSuperSelectOptions } from 'ngx-super-select';
 
 @Component({
@@ -18,5 +19,13 @@ export class AppComponent {
     valueExpr: 'name',
     placeholder: 'select',
     searchEnabled: true
+  };
+
+  form = new FormGroup({
+    names: new FormControl([])
+  });
+
+  onFormSubmit() {
+    console.log(this.form.value);
   }
 }
