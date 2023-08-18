@@ -7,7 +7,7 @@ on:
   release:
     types: [created]
   workflow_run:
-    workflows: ['Build ngx-super-select']
+    workflows: ['ngx-super-select-build']
     types: [completed]
 
 jobs:
