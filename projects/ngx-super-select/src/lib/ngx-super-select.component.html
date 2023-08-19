@@ -1,5 +1,6 @@
 <div class="select-box"
      [class.open]="isOpen"
+     [class.disabled]="disabled"
      (click)="onBoxClicked($event)">
 
     <span>{{ options.placeholder }}</span>
@@ -33,7 +34,7 @@
                    type="text"
                    id="searchBox"
                    class="form-control form-control-sm mx-auto"
-                   style="width: 95%;"
+                   style="width: calc(100% - 8px);"
                    placeholder="search"
                    [(ngModel)]="searchText"
                    autocomplete="off">

@@ -2,6 +2,11 @@
 
 This is a multi choice drop down for Angular
 
+
+## Build Status
+
+[![Build](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml)
+
 ## Install
 
 ### Install bootstrap
