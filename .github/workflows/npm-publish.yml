@@ -9,6 +9,8 @@ on:
   workflow_run:
     workflows: ['ngx-super-select-build']
     types: [completed]
+    branches:
+      - main
 
 jobs:
   publish-npm:
@@ -20,7 +22,7 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm build
+      - run: npm run build
       - run: npm publish
         working-directory: ./dist/ngx-super-select
         env:
