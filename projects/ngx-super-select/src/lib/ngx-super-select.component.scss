@@ -15,10 +15,19 @@
 
     >span {
         color: gray;
+        user-select: none;
     }
 
     &.open {
-        width: 300px;
+        min-width: 300px;
+    }
+
+    &.disabled {
+        cursor: default;
+
+        >span {
+            color: #d7d7d7;
+        }
     }
 }
 
