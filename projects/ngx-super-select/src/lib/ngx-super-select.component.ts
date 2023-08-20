@@ -42,7 +42,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
 
   _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefulats;
   @Input()
-  set options(value: NgxSuperSelectOptions) {
+  set options(value: Partial<NgxSuperSelectOptions>) {
     this._options = { ...NgxSuperSelectOptionsDefulats, ...value };
   };
   get options(): NgxSuperSelectOptions {
@@ -131,10 +131,22 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   getName(obj: any): string {
-    return obj[this.options.displayExpr] || obj;
+    if (this.options.displayExpr?.trim() === '') {
+      return obj + '';
+    }
+    const value = obj[this.options.displayExpr];
+    if (value !== undefined)
+      return value + '';
+    return obj + '';
   }
 
   getValue(obj: any): number {
-    return obj[this.options.valueExpr] || obj;
+    if (this.options.valueExpr?.trim() === '') {
+      return obj;
+    }
+    const value = obj[this.options.valueExpr];
+    if (value !== undefined)
+      return value;
+    return obj;
   }
 }
