@@ -12,22 +12,6 @@ This is a multi choice drop down for Angular
 
 ## Install
 
-### Install bootstrap
-First we need bootstrap installed. (If you have it already installed, you can skip to the next section).
-
-```
-> npm i bootstrap
-```
-
-In the `angular.json` file in the 
-```
-projects:`YOUR_APPLICATION_NAME`:architect:options:styles 
-```
-add this:
-
-`"node_modules/bootstrap/dist/css/bootstrap.min.css"`
-
-### Install NgxSuperSelect
 ```
 > npm i ngx-super-select
 ```
