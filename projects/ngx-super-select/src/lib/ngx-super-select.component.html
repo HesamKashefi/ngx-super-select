@@ -5,7 +5,7 @@
 
     <span>{{ options.placeholder }}</span>
     <span *ngIf="selectedItemValues.length > 0"
-          class="mx-2 text-danger">{{ selectedItemValues.length }}</span>
+          class="selection-counter">{{ selectedItemValues.length }}</span>
 
     <div class="select-popup"
          [class.open]="isOpen"
@@ -14,15 +14,15 @@
         <div class="select-popup-control-panel">
             <div *ngIf="options.actionsEnabled"
                  class="actions">
-                <button class="btn btn-outline-primary btn-sm"
+                <button class="btn btn-outline-primary"
                         (click)="onSelectAllClicked($event)">
                     All
                 </button>
-                <button class="btn btn-outline-primary btn-sm"
+                <button class="btn btn-outline-primary"
                         (click)="onInvertSelectionClicked($event)">
                     Invert
                 </button>
-                <button class="btn btn-outline-danger btn-sm"
+                <button class="btn btn-outline-danger"
                         (click)="onClearClicked($event)">
                     Clear
                 </button>
@@ -33,8 +33,6 @@
             <input *ngIf="options.searchEnabled"
                    type="text"
                    id="searchBox"
-                   class="form-control form-control-sm mx-auto"
-                   style="width: calc(100% - 8px);"
                    placeholder="search"
                    [(ngModel)]="searchText"
                    autocomplete="off">

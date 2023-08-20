@@ -1,6 +1,6 @@
 {
   "name": "ngx-super-select",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "author": {
     "name": "Hesam Kashefi",
     "url": "https://hesamkashefi.com"
@@ -8,12 +8,12 @@
   "repository": {
     "url": "https://github.com/HesamKashefi/ngx-super-select"
   },
-  "peerDependencies": {
-    "@angular/common": ">=4.0.0",
-    "@angular/core": ">=4.0.0"
-  },
+  "peerDependencies": {},
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@angular/common": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/forms": "^16.0.0"
   },
   "sideEffects": false
 }
