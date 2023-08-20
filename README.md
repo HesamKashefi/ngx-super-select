@@ -7,6 +7,9 @@ This is a multi choice drop down for Angular
 
 [![Build](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml)
 
+---
+### [Live Demo on Stackblitz](https://stackblitz.com/edit/ngxsuperselect-demo)
+
 ## Install
 
 ### Install bootstrap
