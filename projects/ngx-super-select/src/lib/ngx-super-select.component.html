@@ -1,6 +1,7 @@
 <div class="select-box"
      [class.open]="isOpen"
      [class.disabled]="disabled"
+     [class.dark]="options.enableDarkMode"
      (click)="onBoxClicked($event)">
 
     <span>{{ options.placeholder }}</span>

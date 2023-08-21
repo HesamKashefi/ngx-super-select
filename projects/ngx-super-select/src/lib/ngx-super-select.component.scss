@@ -2,16 +2,19 @@
     --text-color-dark: #fff;
     --text-color-light: #000000;
 
-    --text-secondary-color-dark: #bebebe;
+    --shadow-color-dark: #383838;
+    --shadow-color-light: #d7d7d7;
+
+    --text-secondary-color-dark: #dfdfdf;
     --text-secondary-color-light: #4d4d4d;
 
-    --border-color-light: #bebebe;
     --border-color-dark: #505050;
+    --border-color-light: #bebebe;
 
     --bg-color-dark: #222222;
     --bg-color-light: #fff;
 
-    --bg-secondary-color-dark: #2c2c2c;
+    --bg-secondary-color-dark: #3b3b3b;
     --bg-secondary-color-light: #ececec;
 
     --selection-bg-color-dark: #2c2c2c75;
@@ -43,18 +46,11 @@
 
     border-radius: 4px;
     border: 1px solid var(--border-color-light);
-
-    @media (prefers-color-scheme: dark) {
-        border: 1px solid var(--border-color-dark);
-    }
+    background-color: var(--bg-color-light);
 
     >span {
         user-select: none;
         color: var(--text-secondary-color-light);
-
-        @media (prefers-color-scheme: dark) {
-            color: var(--text-secondary-color-dark);
-        }
     }
 
     &.open {
@@ -66,10 +62,6 @@
 
         >span {
             color: var(--text-secondary-color-light);
-
-            @media (prefers-color-scheme: dark) {
-                color: var(--text-secondary-color-dark);
-            }
         }
     }
 
@@ -85,14 +77,9 @@
     padding: 0.5rem 0;
     overflow: hidden;
     border-radius: 4px;
-    box-shadow: 0 0 2px 2px #d7d7d7;
-    background-color: var(--bg-color-light) !important;
-    color: var(--text-color-light) !important;
-
-    @media (prefers-color-scheme: dark) {
-        background-color: var(--bg-color-dark) !important;
-        color: var(--text-color-dark) !important;
-    }
+    box-shadow: 0 0 2px 2px var(--shadow-color-light);
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
 
     hr {
         margin: 0.5rem;
@@ -127,11 +114,7 @@
 
             color: var(--text-color-light);
             background-color: var(--bg-secondary-color-light);
-
-            @media (prefers-color-scheme:dark) {
-                color: var(--text-color-dark);
-                background-color: var(--bg-secondary-color-dark);
-            }
+            border-color: var(--border-color-light);
         }
     }
 
@@ -162,10 +145,6 @@
         position: relative;
         background-color: var(--selection-bg-color-light);
 
-        @media (prefers-color-scheme: dark) {
-            background-color: var(--selection-bg-color-dark);
-        }
-
         &::before {
             content: ' ';
             position: absolute;
@@ -175,19 +154,11 @@
             width: 4px;
             height: 40%;
             background-color: var(--selection-indicator-color-light);
-
-            @media (prefers-color-scheme: dark) {
-                background-color: var(--selection-indicator-color-dark);
-            }
         }
     }
 
     &:hover {
         background-color: var(--selection-bg-hover-color-light);
-
-        @media (prefers-color-scheme: dark) {
-            background-color: var(--selection-bg-hover-color-dark);
-        }
     }
 }
 
@@ -206,5 +177,51 @@
     &.btn-outline-danger {
         color: rgb(254, 59, 59);
         border: 1px solid rgb(254, 59, 59);
+    }
+}
+
+
+.dark {
+    &.select-box {
+        border: 1px solid var(--border-color-dark);
+        background-color: var(--bg-color-dark);
+
+        >span {
+            color: var(--text-secondary-color-dark);
+        }
+
+        &.disabled {
+            >span {
+                color: var(--text-secondary-color-dark);
+            }
+        }
+
+        .select-popup {
+            background-color: var(--bg-color-dark);
+            box-shadow: 0 0 2px 2px var(--shadow-color-dark);
+            color: var(--text-color-dark);
+
+            .select-popup-control-panel {
+                input[type=text] {
+                    color: var(--text-color-dark);
+                    background-color: var(--bg-secondary-color-dark);
+                    border-color: var(--border-color-dark);
+                }
+            }
+        }
+
+        .select-option {
+            &.selected {
+                background-color: var(--selection-bg-color-dark);
+
+                &::before {
+                    background-color: var(--selection-indicator-color-dark);
+                }
+            }
+
+            &:hover {
+                background-color: var(--selection-bg-hover-color-dark);
+            }
+        }
     }
 }

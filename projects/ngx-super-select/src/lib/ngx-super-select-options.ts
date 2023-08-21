@@ -4,6 +4,7 @@ export class NgxSuperSelectOptions {
     placeholder = '';
     displayExpr = '';
     valueExpr = '';
+    enableDarkMode = false;
 }
 
 export const NgxSuperSelectOptionsDefulats = {
@@ -11,5 +12,6 @@ export const NgxSuperSelectOptionsDefulats = {
     displayExpr: '',
     valueExpr: '',
     placeholder: 'Select',
-    searchEnabled: true
+    searchEnabled: true,
+    enableDarkMode: false
 };

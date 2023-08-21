@@ -63,7 +63,8 @@ options: NgxSuperSelectOptions = {
     displayExpr: 'name',
     valueExpr: 'name',
     placeholder: 'select',
-    searchEnabled: true
+    searchEnabled: true,
+    enableDarkMode: false
 }
 
 ```
@@ -89,7 +90,8 @@ options: NgxSuperSelectOptions = {
     displayExpr: 'name',
     valueExpr: 'name',
     placeholder: 'select',
-    searchEnabled: true
+    searchEnabled: true,
+    enableDarkMode: false
 }
 
 form = new FormGroup({
