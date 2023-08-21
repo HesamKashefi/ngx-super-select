@@ -18,7 +18,8 @@ export class AppComponent {
     displayExpr: 'name',
     valueExpr: 'name',
     placeholder: 'select',
-    searchEnabled: true
+    searchEnabled: true,
+    enableDarkMode: false
   };
 
   form = new FormGroup({

@@ -2,10 +2,21 @@
 
 This is a multi choice drop down for Angular
 
+## Features
+
+* Multiple Selections
+* Supports Primitive Data Types (number, string) And Complex Objects
+* Search
+* Select All | Invert Selection | Clear All
+* Angular Forms Support
+* Dark Theme And Light Theme Support
+
 
 ## Build Status
 
 [![Build](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml)
+
+[![publish-npm-package](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/npm-publish.yml)
 
 ---
 ### [Live Demo on Stackblitz](https://stackblitz.com/edit/ngxsuperselect-demo)
@@ -52,7 +63,8 @@ options: NgxSuperSelectOptions = {
     displayExpr: 'name',
     valueExpr: 'name',
     placeholder: 'select',
-    searchEnabled: true
+    searchEnabled: true,
+    enableDarkMode: false
 }
 
 ```
@@ -78,7 +90,8 @@ options: NgxSuperSelectOptions = {
     displayExpr: 'name',
     valueExpr: 'name',
     placeholder: 'select',
-    searchEnabled: true
+    searchEnabled: true,
+    enableDarkMode: false
 }
 
 form = new FormGroup({

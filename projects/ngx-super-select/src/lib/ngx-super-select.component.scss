@@ -1,4 +1,33 @@
 * {
+    --text-color-dark: #fff;
+    --text-color-light: #000000;
+
+    --shadow-color-dark: #383838;
+    --shadow-color-light: #d7d7d7;
+
+    --text-secondary-color-dark: #dfdfdf;
+    --text-secondary-color-light: #4d4d4d;
+
+    --border-color-dark: #505050;
+    --border-color-light: #bebebe;
+
+    --bg-color-dark: #222222;
+    --bg-color-light: #fff;
+
+    --bg-secondary-color-dark: #3b3b3b;
+    --bg-secondary-color-light: #ececec;
+
+    --selection-bg-color-dark: #2c2c2c75;
+    --selection-bg-color-light: #f3f3f3;
+
+    --selection-bg-hover-color-dark: #3d3d3d;
+    --selection-bg-hover-color-light: #f0f0f0;
+
+    --selection-indicator-color-dark: #bbbbbb;
+    --selection-indicator-color-light: #858585;
+}
+
+* {
     box-sizing: border-box;
 }
 
@@ -6,8 +35,6 @@
     cursor: pointer;
     height: 40px;
 
-    border-radius: 4px;
-    border: 1px solid gainsboro;
     position: relative;
 
     display: flex;
@@ -17,9 +44,13 @@
 
     transition-duration: 0.2s;
 
+    border-radius: 4px;
+    border: 1px solid var(--border-color-light);
+    background-color: var(--bg-color-light);
+
     >span {
-        color: gray;
         user-select: none;
+        color: var(--text-secondary-color-light);
     }
 
     &.open {
@@ -30,7 +61,7 @@
         cursor: default;
 
         >span {
-            color: #d7d7d7;
+            color: var(--text-secondary-color-light);
         }
     }
 
@@ -43,12 +74,12 @@
 .select-popup {
     position: absolute;
     display: none;
-    background-color: white;
     padding: 0.5rem 0;
-
-    box-shadow: 0 0 2px 2px #d7d7d7;
-    border-radius: 4px;
     overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 2px var(--shadow-color-light);
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
 
     hr {
         margin: 0.5rem;
@@ -80,6 +111,10 @@
             border: 1px solid #dee2e6;
             font-weight: 400;
             line-height: 1.5;
+
+            color: var(--text-color-light);
+            background-color: var(--bg-secondary-color-light);
+            border-color: var(--border-color-light);
         }
     }
 
@@ -108,22 +143,22 @@
 
     &.selected {
         position: relative;
-        background-color: #f6f6f6;
+        background-color: var(--selection-bg-color-light);
 
         &::before {
             content: ' ';
             position: absolute;
-            left: 0;
-            top: 10%;
+            left: 4px;
+            top: 30%;
             display: inline-block;
             width: 4px;
-            height: 80%;
-            background-color: rgb(118, 118, 118);
+            height: 40%;
+            background-color: var(--selection-indicator-color-light);
         }
     }
 
     &:hover {
-        background-color: #e5e5e5;
+        background-color: var(--selection-bg-hover-color-light);
     }
 }
 
@@ -142,5 +177,51 @@
     &.btn-outline-danger {
         color: rgb(254, 59, 59);
         border: 1px solid rgb(254, 59, 59);
+    }
+}
+
+
+.dark {
+    &.select-box {
+        border: 1px solid var(--border-color-dark);
+        background-color: var(--bg-color-dark);
+
+        >span {
+            color: var(--text-secondary-color-dark);
+        }
+
+        &.disabled {
+            >span {
+                color: var(--text-secondary-color-dark);
+            }
+        }
+
+        .select-popup {
+            background-color: var(--bg-color-dark);
+            box-shadow: 0 0 2px 2px var(--shadow-color-dark);
+            color: var(--text-color-dark);
+
+            .select-popup-control-panel {
+                input[type=text] {
+                    color: var(--text-color-dark);
+                    background-color: var(--bg-secondary-color-dark);
+                    border-color: var(--border-color-dark);
+                }
+            }
+        }
+
+        .select-option {
+            &.selected {
+                background-color: var(--selection-bg-color-dark);
+
+                &::before {
+                    background-color: var(--selection-indicator-color-dark);
+                }
+            }
+
+            &:hover {
+                background-color: var(--selection-bg-hover-color-dark);
+            }
+        }
     }
 }
