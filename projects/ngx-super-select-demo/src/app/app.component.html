@@ -1,5 +1,10 @@
 <section>
   <h1>ngx-super-select</h1>
+  <a target="_blank"
+     href="https://github.com/HesamKashefi/ngx-super-select"
+     class="my-2 d-block">
+    Learn more about NgxSuperSelect
+  </a>
 
   <h5>Primitive Type Data:</h5>
   <ngx-super-select [dataSource]="[1,2,3]">
@@ -35,4 +40,21 @@
                     [disabled]="true">
 
   </ngx-super-select>
+
+  <hr>
+
+  <h5>Single Selection Mode:</h5>
+  <form [formGroup]="formSingleMode"
+        (submit)="onFormSingleModeSubmit()">
+
+    <ngx-super-select formControlName="item"
+                      [dataSource]="[1,2,3]"
+                      [options]="formSingleModeOptions"
+                      [disabled]="true">
+
+    </ngx-super-select>
+
+    <button type="submit"
+            class="btn btn-primary my-2">Submit</button>
+  </form>
 </section>

@@ -15,11 +15,13 @@
         <div class="select-popup-control-panel">
             <div *ngIf="options.actionsEnabled"
                  class="actions">
-                <button class="btn btn-outline-primary"
+                <button *ngIf="options.selectionMode === 'multiple'"
+                        class="btn btn-outline-primary"
                         (click)="onSelectAllClicked($event)">
                     All
                 </button>
-                <button class="btn btn-outline-primary"
+                <button *ngIf="options.selectionMode === 'multiple'"
+                        class="btn btn-outline-primary"
                         (click)="onInvertSelectionClicked($event)">
                     Invert
                 </button>

@@ -5,13 +5,21 @@ export class NgxSuperSelectOptions {
     displayExpr = '';
     valueExpr = '';
     enableDarkMode = false;
+    selectionMode: 'single' | 'multiple' = 'multiple';
+
+    /**
+     * this value will be used when there is no item selected in single selection mode
+     */
+    singleSelectionModeDefaultValue: any = undefined;
 }
 
-export const NgxSuperSelectOptionsDefulats = {
+export const NgxSuperSelectOptionsDefulats: NgxSuperSelectOptions = {
     actionsEnabled: true,
     displayExpr: '',
     valueExpr: '',
     placeholder: 'Select',
     searchEnabled: true,
-    enableDarkMode: false
+    enableDarkMode: false,
+    selectionMode: 'multiple',
+    singleSelectionModeDefaultValue: undefined
 };

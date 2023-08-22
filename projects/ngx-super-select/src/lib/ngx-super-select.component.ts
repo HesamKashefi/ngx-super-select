@@ -14,8 +14,11 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   private _onChange: any;
 
   writeValue(obj: any): void {
-    if (Array.isArray(obj)) {
+    if (Array.isArray(obj) && this.options.selectionMode === 'multiple') {
       this.selectedItemValues = obj;
+    }
+    else if (this.options.selectionMode === 'single' && obj !== this.options.singleSelectionModeDefaultValue) {
+      this.selectedItemValues = [obj];
     }
   }
   registerOnChange(fn: any): void {
@@ -68,16 +71,22 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   onItemClicked(e: any, item: any) {
-    const index = this.selectedItemValues.findIndex(x => x === this.getValue(item));
-    if (index < 0) {
-      const a = [...this.selectedItemValues];
-      a.push(this.getValue(item));
-      this.selectedItemValues = a;
+    const value = this.getValue(item);
+    if (this.options.selectionMode === 'multiple') {
+      const index = this.selectedItemValues.findIndex(x => x === value);
+      if (index < 0) {
+        const item = [...this.selectedItemValues];
+        item.push(value);
+        this.selectedItemValues = item;
+      }
+      else {
+        const item = [...this.selectedItemValues];
+        item.splice(index, 1);
+        this.selectedItemValues = item;
+      }
     }
     else {
-      const a = [...this.selectedItemValues];
-      a.splice(index, 1);
-      this.selectedItemValues = a;
+      this.selectedItemValues = [value];
     }
     this.handleActionButtonEvent(e);
   }
@@ -105,10 +114,21 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
       this._onTouch();
     }
 
-    if (this._onChange) {
-      this._onChange(this.selectedItemValues);
+    if (this.options.selectionMode === 'multiple') {
+      if (this._onChange) {
+        this._onChange(this.selectedItemValues);
+      }
+      this.selectionChanged.emit(this.selectedItemValues);
+
     }
-    this.selectionChanged.emit(this.selectedItemValues);
+    else {
+      const value = this.selectedItemValues.length > 0 ? this.selectedItemValues[0] : this.options.singleSelectionModeDefaultValue;
+
+      if (this._onChange) {
+        this._onChange(value);
+      }
+      this.selectionChanged.emit(value);
+    }
   }
 
   onPopupClicked(e: any) {

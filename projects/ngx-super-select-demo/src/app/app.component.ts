@@ -13,13 +13,17 @@ export class AppComponent {
     { name: 'kashefi' },
   ];
 
-  options: NgxSuperSelectOptions = {
+  //#region multiple selection mode form
+
+  options: Partial<NgxSuperSelectOptions> = {
     actionsEnabled: true,
     displayExpr: 'name',
     valueExpr: 'name',
-    placeholder: 'select',
+    placeholder: 'Names',
     searchEnabled: true,
-    enableDarkMode: false
+    enableDarkMode: false,
+    selectionMode: 'multiple',
+    singleSelectionModeDefaultValue: undefined
   };
 
   form = new FormGroup({
@@ -27,6 +31,25 @@ export class AppComponent {
   });
 
   onFormSubmit() {
-    console.log(this.form.value);
+    alert(this.form.value.names?.join(', '));
   }
+
+  //#region multiple selection mode form
+
+  //#region single selection mode form
+
+  formSingleModeOptions: Partial<NgxSuperSelectOptions> = {
+    selectionMode: 'single',
+    singleSelectionModeDefaultValue: null
+  };
+
+  formSingleMode = new FormGroup({
+    item: new FormControl(null)
+  });
+
+  onFormSingleModeSubmit() {
+    alert(this.formSingleMode.value.item);
+  }
+
+  //#endregion single selection mode form
 }

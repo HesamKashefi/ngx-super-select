@@ -1,6 +1,6 @@
 {
   "name": "ngx-super-select",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "author": {
     "name": "Hesam Kashefi",
     "url": "https://hesamkashefi.com"
@@ -8,6 +8,21 @@
   "repository": {
     "url": "https://github.com/HesamKashefi/ngx-super-select"
   },
+  "keywords": [
+    "NgxSuperSelect",
+    "ngx-super-select",
+    "select",
+    "multi select",
+    "dropdown",
+    "multi choice",
+    "multiple choices",
+    "multi selection",
+    "multiple selection",
+    "selectbox",
+    "select search",
+    "select all",
+    "angular"
+  ],
   "peerDependencies": {},
   "dependencies": {
     "tslib": "^2.3.0",
