@@ -4,7 +4,8 @@ This is a multi choice drop down for Angular
 
 ## Features
 
-* Multiple Selections
+* Multiple Selection Mode
+* Single Selection Mode With Custom Default Value!
 * Supports Primitive Data Types (number, string) And Complex Objects
 * Search
 * Select All | Invert Selection | Clear All
@@ -58,7 +59,7 @@ data: { name: string }[] = [
     { name: 'kashefi' }
 ];
 
-options: NgxSuperSelectOptions = {
+options: Partial<NgxSuperSelectOptions> = {
     actionsEnabled: true,
     displayExpr: 'name',
     valueExpr: 'name',
@@ -77,7 +78,7 @@ in your component.html file:
 
   ```
 
-or use it in a form:
+### Use in a form:
 ```
 
 data: { name: string }[] = [
@@ -85,7 +86,7 @@ data: { name: string }[] = [
     { name: 'kashefi' }
 ];
 
-options: NgxSuperSelectOptions = {
+options: Partial<NgxSuperSelectOptions> = {
     actionsEnabled: true,
     displayExpr: 'name',
     valueExpr: 'name',
@@ -116,3 +117,18 @@ onFormSubmit() {
             class="btn btn-primary my-2">Submit</button>
   </form>
   ```
+
+  
+### Single Selection Mode:
+
+use `singleSelectionModeDefaultValue` opption to specify the empty value!
+
+```
+
+ <ngx-super-select formControlName="item"
+                   [dataSource]="[1,2,3]"
+                   [options]="{ selectionMode: 'single', singleSelectionModeDefaultValue: 0}">
+
+  </ngx-super-select>
+    
+```
