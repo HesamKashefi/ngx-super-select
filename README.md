@@ -1,7 +1,11 @@
 # NgxSuperSelect
 
-This is a multi choice drop down for Angular
+This is a single/multiple choice drop down for Angular with search and other features!
 
+---
+### [Live Demo on Stackblitz](https://stackblitz.com/edit/ngxsuperselect-demo)
+
+---
 ## Features
 
 * Multiple Selection Mode
@@ -15,12 +19,10 @@ This is a multi choice drop down for Angular
 
 ## Build Status
 
-[![Build](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml)
+|  Build |  NPM Publish  |
+|:---:|:---:|
+| [![Build](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/build.yml) | [![publish-npm-package](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/npm-publish.yml) |
 
-[![publish-npm-package](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/HesamKashefi/ngx-super-select/actions/workflows/npm-publish.yml)
-
----
-### [Live Demo on Stackblitz](https://stackblitz.com/edit/ngxsuperselect-demo)
 
 ## Install
 
@@ -121,7 +123,9 @@ onFormSubmit() {
   
 ### Single Selection Mode:
 
-use `singleSelectionModeDefaultValue` opption to specify the empty value!
+Set selectionMode: 'single' in the options to enable single selection.
+
+You can also use `singleSelectionModeDefaultValue` option to specify the empty value for no selection!
 
 ```
 
