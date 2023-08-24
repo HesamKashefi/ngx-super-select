@@ -5,7 +5,13 @@
      (click)="onBoxClicked($event)">
 
     <span>{{ options.placeholder }}</span>
-    <span *ngIf="selectedItemValues.length > 0"
+
+    <div *ngIf="options.enableChips"
+         class="select-selected-items">
+        <span *ngFor="let item of selectedItemValues">{{ item }}</span>
+    </div>
+
+    <span *ngIf="selectedItemValues.length > 0 && options.selectionMode === 'multiple'"
           class="selection-counter">{{ selectedItemValues.length }}</span>
 
     <div class="select-popup"

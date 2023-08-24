@@ -5,6 +5,9 @@
     --shadow-color-dark: #383838;
     --shadow-color-light: #d7d7d7;
 
+    --btn-primary-color-light: rgb(0, 115, 255);
+    --btn-primary-color-dark: rgb(255, 213, 51);
+
     --text-secondary-color-dark: #dfdfdf;
     --text-secondary-color-light: #4d4d4d;
 
@@ -37,8 +40,10 @@
 
     position: relative;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
+
     padding-left: 0.5rem;
     padding-right: 0.2rem;
 
@@ -65,7 +70,26 @@
         }
     }
 
+    .select-selected-items {
+        grid-column: 2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px;
+        margin: 0 8px;
+        overflow-x: hidden;
+
+
+        span {
+            border-radius: 4px;
+            padding: 4px;
+            color: var(--text-color-light);
+            background-color: var(--bg-secondary-color-light);
+        }
+    }
+
     .selection-counter {
+        grid-column: 3;
         margin: 0 8px;
         color: red;
     }
@@ -148,11 +172,11 @@
         &::before {
             content: ' ';
             position: absolute;
-            left: 4px;
-            top: 30%;
+            left: 2px;
+            top: 10%;
             display: inline-block;
             width: 4px;
-            height: 40%;
+            height: 80%;
             background-color: var(--selection-indicator-color-light);
         }
     }
@@ -170,8 +194,8 @@
     background: transparent;
 
     &.btn-outline-primary {
-        color: rgb(0, 115, 255);
-        border: 1px solid rgb(0, 115, 255);
+        color: var(--btn-primary-color-light);
+        border: 1px solid var(--btn-primary-color-light);
     }
 
     &.btn-outline-danger {
@@ -190,9 +214,20 @@
             color: var(--text-secondary-color-dark);
         }
 
+        .selection-counter {
+            color: red;
+        }
+
         &.disabled {
             >span {
                 color: var(--text-secondary-color-dark);
+            }
+        }
+
+        .select-selected-items {
+            span {
+                color: var(--text-color-dark);
+                background-color: var(--bg-secondary-color-dark);
             }
         }
 
@@ -222,6 +257,13 @@
             &:hover {
                 background-color: var(--selection-bg-hover-color-dark);
             }
+        }
+    }
+
+    .btn {
+        &.btn-outline-primary {
+            color: var(--btn-primary-color-dark);
+            border: 1px solid var(--btn-primary-color-dark);
         }
     }
 }

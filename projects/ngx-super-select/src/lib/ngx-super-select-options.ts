@@ -1,11 +1,12 @@
 export class NgxSuperSelectOptions {
-    actionsEnabled = true;
-    searchEnabled = true;
-    placeholder = '';
-    displayExpr = '';
-    valueExpr = '';
+    actionsEnabled: boolean = true;
+    searchEnabled: boolean = true;
+    placeholder: string = '';
+    displayExpr: string = '';
+    valueExpr: string = '';
     enableDarkMode = false;
     selectionMode: 'single' | 'multiple' = 'multiple';
+    enableChips: boolean = true;
 
     /**
      * this value will be used when there is no item selected in single selection mode
@@ -13,7 +14,7 @@ export class NgxSuperSelectOptions {
     singleSelectionModeDefaultValue: any = undefined;
 }
 
-export const NgxSuperSelectOptionsDefulats: NgxSuperSelectOptions = {
+export const NgxSuperSelectOptionsDefaults: NgxSuperSelectOptions = {
     actionsEnabled: true,
     displayExpr: '',
     valueExpr: '',
@@ -21,5 +22,6 @@ export const NgxSuperSelectOptionsDefulats: NgxSuperSelectOptions = {
     searchEnabled: true,
     enableDarkMode: false,
     selectionMode: 'multiple',
-    singleSelectionModeDefaultValue: undefined
+    singleSelectionModeDefaultValue: undefined,
+    enableChips: true
 };

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, Output, forwardRef } from '@angular/core';
-import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefulats } from './ngx-super-select-options';
+import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefaults } from './ngx-super-select-options';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -43,10 +43,10 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   @Input()
   disabled: boolean = false;
 
-  _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefulats;
+  _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefaults;
   @Input()
   set options(value: Partial<NgxSuperSelectOptions>) {
-    this._options = { ...NgxSuperSelectOptionsDefulats, ...value };
+    this._options = { ...NgxSuperSelectOptionsDefaults, ...value };
   };
   get options(): NgxSuperSelectOptions {
     return this._options;
