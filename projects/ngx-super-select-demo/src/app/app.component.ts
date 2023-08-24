@@ -10,7 +10,7 @@ import { NgxSuperSelectOptions } from 'ngx-super-select';
 export class AppComponent {
   data: { name: string }[] = [
     { name: 'hesam' },
-    { name: 'kashefi' },
+    { name: 'kashefi' }
   ];
 
   //#region multiple selection mode form

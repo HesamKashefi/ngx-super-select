@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output, forwardRef } from '@angular/core';
-import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefulats } from './ngx-super-select-options';
+import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefaults } from './ngx-super-select-options';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgxSuperSelectService } from './ngx-super-select.service';
 
 @Component({
   selector: 'ngx-super-select',
@@ -43,27 +44,61 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   @Input()
   disabled: boolean = false;
 
-  _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefulats;
+  _options: NgxSuperSelectOptions = NgxSuperSelectOptionsDefaults;
   @Input()
   set options(value: Partial<NgxSuperSelectOptions>) {
-    this._options = { ...NgxSuperSelectOptionsDefulats, ...value };
+    this._options = { ...NgxSuperSelectOptionsDefaults, ...value };
   };
   get options(): NgxSuperSelectOptions {
     return this._options;
   }
 
+  /**
+   * the list of the selected values
+   */
   @Input()
   selectedItemValues: any[] = [];
 
   @Output()
   selectionChanged = new EventEmitter<any[]>();
 
+  /**
+   * The state of the popup
+   */
   isOpen = false;
+
+  /**
+   * the current searched phrase
+   */
   searchText = '';
+
+  /**
+   * unique id of this instance
+   */
+  private selectId: string = '';
+
+  constructor(private ngxSuperSelectService: NgxSuperSelectService) {
+    this.registerSelect();
+  }
+
+  /**
+   * register this instance for a central control over all instances
+   */
+  private registerSelect() {
+    this.selectId = new Date().getTime().toString() + '_' + Math.random();
+    this.ngxSuperSelectService.register(this.selectId);
+    this.ngxSuperSelectService.popupOpened$.subscribe(id => {
+      if (id !== this.selectId) {
+        this.isOpen = false;
+      }
+    });
+  }
 
   onBoxClicked(e: any) {
     if (!this.disabled) {
       this.isOpen = !this.isOpen;
+      if (this.isOpen)
+        this.ngxSuperSelectService.onOpenedSelectPopup(this.selectId);
     }
     e.stopPropagation();
     e.preventDefault();

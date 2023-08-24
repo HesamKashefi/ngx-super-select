@@ -43,6 +43,16 @@
 
   <hr>
 
+
+
+  <h5>Dark Mode:</h5>
+  <ngx-super-select [dataSource]="[1,2,3]"
+                    [options]="{ enableDarkMode: true }">
+
+  </ngx-super-select>
+
+  <hr>
+
   <h5>Single Selection Mode:</h5>
   <form [formGroup]="formSingleMode"
         (submit)="onFormSingleModeSubmit()">
