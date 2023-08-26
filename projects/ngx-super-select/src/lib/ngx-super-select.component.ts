@@ -210,6 +210,20 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
     }
   }
 
+  getNameForValue(obj: any): string {
+    if (this.options.displayExpr?.trim() === '') {
+      return obj + '';
+    }
+    const index = this.dataSource.findIndex(x => this.getValue(x) === obj);
+    if (index < 0) {
+      return obj + '';
+    }
+    const value = this.dataSource[index][this.options.displayExpr];
+    if (value !== undefined)
+      return value + '';
+    return obj + '';
+  }
+
   getName(obj: any): string {
     if (this.options.displayExpr?.trim() === '') {
       return obj + '';

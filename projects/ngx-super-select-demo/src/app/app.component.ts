@@ -8,9 +8,9 @@ import { NgxSuperSelectOptions } from 'ngx-super-select';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  data: { name: string }[] = [
-    { name: 'hesam' },
-    { name: 'kashefi' }
+  data: { id: number, name: string }[] = [
+    { id: 1, name: 'hesam' },
+    { id: 2, name: 'kashefi' }
   ];
 
   //#region multiple selection mode form
@@ -18,7 +18,7 @@ export class AppComponent {
   options: Partial<NgxSuperSelectOptions> = {
     actionsEnabled: true,
     displayExpr: 'name',
-    valueExpr: 'name',
+    valueExpr: 'id',
     placeholder: 'Names',
     searchEnabled: true,
     enableDarkMode: false,
