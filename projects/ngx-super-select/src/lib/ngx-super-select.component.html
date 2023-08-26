@@ -52,7 +52,8 @@
         <div class="select-popup-options">
             <div *ngFor="let item of getFilteredItems()"
                  class="select-option"
-                 [class.selected]="isSelected(item)"
+                 [class.selected]="isItemSelected(item)"
+                 [class.disabled]="isItemDisabled(item)"
                  (click)="onItemClicked($event, item)">
                 {{ getName(item) }}
             </div>
