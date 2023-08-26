@@ -8,7 +8,7 @@
 
     <div *ngIf="options.enableChips"
          class="select-selected-items">
-        <span *ngFor="let item of selectedItemValues">{{ item }}</span>
+        <span *ngFor="let item of selectedItemValues">{{ getNameForValue(item) }}</span>
     </div>
 
     <span *ngIf="selectedItemValues.length > 0 && options.selectionMode === 'multiple'"
