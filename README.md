@@ -51,6 +51,21 @@ You can use it as simple as this:
  </ngx-super-select>
 ```
 
+to select options by default:
+```
+ <ngx-super-select [dataSource]="[1,2,3]" 
+                   [selectedItemValues]="[2]">
+ </ngx-super-select>
+```
+
+to disable options:
+```
+ <ngx-super-select [dataSource]="[1,2,3]" 
+                   [selectedItemValues]="[2]"
+                   [disabledItemValues]="[2, 3]">
+ </ngx-super-select>
+```
+
 if you have complex object data then you need to set options:
 
 in your component.ts file

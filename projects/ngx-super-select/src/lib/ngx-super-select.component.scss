@@ -11,6 +11,9 @@
     --text-secondary-color-dark: #dfdfdf;
     --text-secondary-color-light: #4d4d4d;
 
+    --text-disabled-color-dark: #8c8c8c;
+    --text-disabled-color-light: #8c8c8c;
+
     --border-color-dark: #505050;
     --border-color-light: #bebebe;
 
@@ -28,6 +31,9 @@
 
     --selection-indicator-color-dark: #bbbbbb;
     --selection-indicator-color-light: #858585;
+
+    --selection-disabled-indicator-color-dark: #6e6e6e;
+    --selection-disabled-indicator-color-light: #bebebe;
 }
 
 * {
@@ -63,10 +69,10 @@
     }
 
     &.disabled {
-        cursor: default;
+        cursor: not-allowed;
 
         >span {
-            color: var(--text-secondary-color-light);
+            color: var(--text-disabled-color-light);
         }
     }
 
@@ -181,7 +187,16 @@
         }
     }
 
-    &:hover {
+    &.disabled {
+        cursor: not-allowed;
+        color: var(--text-disabled-color-light);
+
+        &::before {
+            background-color: var(--selection-disabled-indicator-color-light);
+        }
+    }
+
+    &:hover:not(.disabled) {
         background-color: var(--selection-bg-hover-color-light);
     }
 }
@@ -220,7 +235,7 @@
 
         &.disabled {
             >span {
-                color: var(--text-secondary-color-dark);
+                color: var(--text-disabled-color-dark);
             }
         }
 
@@ -254,7 +269,15 @@
                 }
             }
 
-            &:hover {
+            &.disabled {
+                color: var(--text-disabled-color-dark);
+
+                &::before {
+                    background-color: var(--selection-disabled-indicator-color-dark);
+                }
+            }
+
+            &:hover:not(.disabled) {
                 background-color: var(--selection-bg-hover-color-dark);
             }
         }

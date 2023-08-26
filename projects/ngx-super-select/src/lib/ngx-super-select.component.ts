@@ -55,9 +55,19 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
 
   /**
    * the list of the selected values
+   * these values get checked againts valueExpr of the items in dataSource
+   * e.g. disabledItemValues[0] === dataSource[0][valueExpr]
    */
   @Input()
   selectedItemValues: any[] = [];
+
+  /**
+   * the list of the disabled item values
+   * these values get checked againts valueExpr of the items in dataSource
+   * e.g. disabledItemValues[0] === dataSource[0][valueExpr]
+   */
+  @Input()
+  disabledItemValues: any[] = [];
 
   @Output()
   selectionChanged = new EventEmitter<any[]>();
@@ -106,38 +116,49 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   onItemClicked(e: any, item: any) {
-    const value = this.getValue(item);
-    if (this.options.selectionMode === 'multiple') {
-      const index = this.selectedItemValues.findIndex(x => x === value);
-      if (index < 0) {
-        const item = [...this.selectedItemValues];
-        item.push(value);
-        this.selectedItemValues = item;
+    if (!this.isItemDisabled(item)) {
+      const value = this.getValue(item);
+      if (this.options.selectionMode === 'multiple') {
+        const index = this.selectedItemValues.findIndex(x => x === value);
+        if (index < 0) {
+          const item = [...this.selectedItemValues];
+          item.push(value);
+          this.selectedItemValues = item;
+        }
+        else {
+          const item = [...this.selectedItemValues];
+          item.splice(index, 1);
+          this.selectedItemValues = item;
+        }
       }
       else {
-        const item = [...this.selectedItemValues];
-        item.splice(index, 1);
-        this.selectedItemValues = item;
+        this.selectedItemValues = [value];
       }
-    }
-    else {
-      this.selectedItemValues = [value];
     }
     this.handleActionButtonEvent(e);
   }
 
   onSelectAllClicked(e: any) {
-    this.selectedItemValues = this.dataSource.map(x => this.getValue(x));
+    this.selectedItemValues = this.dataSource
+      .filter(x => !this.isItemDisabled(x) || this.isItemSelected(x))
+      .map(x => this.getValue(x));
     this.handleActionButtonEvent(e);
   }
 
   onInvertSelectionClicked(e: any) {
-    this.selectedItemValues = this.dataSource.filter(i => !this.isSelected(i)).map(x => this.getValue(x));
+    this.selectedItemValues = this.dataSource
+      .filter(x => {
+        if (this.isItemDisabled(x)) return this.isItemSelected(x);
+        return !this.isItemSelected(x);
+      })
+      .map(x => this.getValue(x));
     this.handleActionButtonEvent(e);
   }
 
   onClearClicked(e: any) {
-    this.selectedItemValues = [];
+    this.selectedItemValues = this.dataSource
+      .filter(x => this.isItemDisabled(x) && this.isItemSelected(x))
+      .map(x => this.getValue(x));
     this.handleActionButtonEvent(e);
   }
 
@@ -171,8 +192,12 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
     e.preventDefault();
   }
 
-  isSelected(item: any) {
+  isItemSelected(item: any) {
     return this.selectedItemValues.findIndex(x => x === this.getValue(item)) >= 0;
+  }
+
+  isItemDisabled(item: any) {
+    return this.disabledItemValues.findIndex(x => x === this.getValue(item)) >= 0
   }
 
   getFilteredItems() {
