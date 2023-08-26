@@ -52,12 +52,13 @@
   <h5>Disabled Options:</h5>
   <ngx-super-select [dataSource]="[1,2,3]"
                     [selectedItemValues]="[2]"
-                    [disabledItemValues]="[2]">
+                    [disabledItemValues]="[2, 3]">
 
   </ngx-super-select>
   <br>
   <ngx-super-select [dataSource]="[1,2,3]"
-                    [disabledItemValues]="[2]"
+                    [selectedItemValues]="[2]"
+                    [disabledItemValues]="[2, 3]"
                     [options]="{ enableDarkMode: true }">
 
   </ngx-super-select>

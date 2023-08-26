@@ -31,6 +31,9 @@
 
     --selection-indicator-color-dark: #bbbbbb;
     --selection-indicator-color-light: #858585;
+
+    --selection-disabled-indicator-color-dark: #6e6e6e;
+    --selection-disabled-indicator-color-light: #bebebe;
 }
 
 * {
@@ -187,6 +190,10 @@
     &.disabled {
         cursor: not-allowed;
         color: var(--text-disabled-color-light);
+
+        &::before {
+            background-color: var(--selection-disabled-indicator-color-light);
+        }
     }
 
     &:hover:not(.disabled) {
@@ -264,6 +271,10 @@
 
             &.disabled {
                 color: var(--text-disabled-color-dark);
+
+                &::before {
+                    background-color: var(--selection-disabled-indicator-color-dark);
+                }
             }
 
             &:hover:not(.disabled) {
