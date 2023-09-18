@@ -39,7 +39,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   @Input()
-  dataSource: any[] = [];
+  dataSource: any;
 
   @Input()
   disabled: boolean = false;
@@ -59,7 +59,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
    * e.g. disabledItemValues[0] === dataSource[0][valueExpr]
    */
   @Input()
-  selectedItemValues: any[] = [];
+  selectedItemValues: any;
 
   /**
    * the list of the disabled item values
@@ -67,7 +67,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
    * e.g. disabledItemValues[0] === dataSource[0][valueExpr]
    */
   @Input()
-  disabledItemValues: any[] = [];
+  disabledItemValues: any;
 
   @Output()
   selectionChanged = new EventEmitter<any[]>();
@@ -119,14 +119,16 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
     if (!this.isItemDisabled(item)) {
       const value = this.getValue(item);
       if (this.options.selectionMode === 'multiple') {
-        const index = this.selectedItemValues.findIndex(x => x === value);
+        const selectedItemValues = this.selectedItemValues || [];
+        if (!Array.isArray(selectedItemValues)) return;
+        const index = selectedItemValues.findIndex(x => x === value);
         if (index < 0) {
-          const item = [...this.selectedItemValues];
+          const item = [...selectedItemValues];
           item.push(value);
           this.selectedItemValues = item;
         }
         else {
-          const item = [...this.selectedItemValues];
+          const item = [...selectedItemValues];
           item.splice(index, 1);
           this.selectedItemValues = item;
         }
@@ -139,14 +141,18 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   onSelectAllClicked(e: any) {
-    this.selectedItemValues = this.dataSource
+    const dataSource = this.dataSource;
+    if (!Array.isArray(dataSource)) return;
+    this.selectedItemValues = dataSource
       .filter(x => !this.isItemDisabled(x) || this.isItemSelected(x))
       .map(x => this.getValue(x));
     this.handleActionButtonEvent(e);
   }
 
   onInvertSelectionClicked(e: any) {
-    this.selectedItemValues = this.dataSource
+    const dataSource = this.dataSource;
+    if (!Array.isArray(dataSource)) return;
+    this.selectedItemValues = dataSource
       .filter(x => {
         if (this.isItemDisabled(x)) return this.isItemSelected(x);
         return !this.isItemSelected(x);
@@ -156,7 +162,9 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   onClearClicked(e: any) {
-    this.selectedItemValues = this.dataSource
+    const dataSource = this.dataSource;
+    if (!Array.isArray(dataSource)) return;
+    this.selectedItemValues = dataSource
       .filter(x => this.isItemDisabled(x) && this.isItemSelected(x))
       .map(x => this.getValue(x));
     this.handleActionButtonEvent(e);
@@ -193,20 +201,26 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   isItemSelected(item: any) {
-    return this.selectedItemValues.findIndex(x => x === this.getValue(item)) >= 0;
+    const selectedItemValues = this.selectedItemValues;
+    if (!Array.isArray(selectedItemValues)) return;
+    return selectedItemValues.findIndex(x => x === this.getValue(item)) >= 0;
   }
 
   isItemDisabled(item: any) {
-    return this.disabledItemValues.findIndex(x => x === this.getValue(item)) >= 0
+    const disabledItemValues = this.disabledItemValues;
+    if (!Array.isArray(disabledItemValues)) return;
+    return disabledItemValues.findIndex(x => x === this.getValue(item)) >= 0
   }
 
   getFilteredItems() {
+    const dataSource = this.dataSource;
+    if (!Array.isArray(dataSource)) return [];
     const val = this.searchText.trim().toLocaleLowerCase();
     if (val === '') {
-      return this.dataSource;
+      return dataSource;
     }
     else {
-      return this.dataSource.filter(x => this.getName(x).toLocaleLowerCase().indexOf(val) >= 0);
+      return dataSource.filter(x => this.getName(x).toLocaleLowerCase().indexOf(val) >= 0);
     }
   }
 
@@ -214,7 +228,9 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
     if (this.options.displayExpr?.trim() === '') {
       return obj + '';
     }
-    const index = this.dataSource.findIndex(x => this.getValue(x) === obj);
+    const dataSource = this.dataSource;
+    if (!Array.isArray(dataSource)) return '';
+    const index = dataSource.findIndex(x => this.getValue(x) === obj);
     if (index < 0) {
       return obj + '';
     }

@@ -6,12 +6,12 @@
 
     <span>{{ options.placeholder }}</span>
 
-    <div *ngIf="options.enableChips"
+    <div *ngIf="selectedItemValues && options.enableChips"
          class="select-selected-items">
         <span *ngFor="let item of selectedItemValues">{{ getNameForValue(item) }}</span>
     </div>
 
-    <span *ngIf="selectedItemValues.length > 0 && options.selectionMode === 'multiple'"
+    <span *ngIf="selectedItemValues && selectedItemValues.length > 0 && options.selectionMode === 'multiple'"
           class="selection-counter">{{ selectedItemValues.length }}</span>
 
     <div class="select-popup"
