@@ -1,6 +1,6 @@
 {
   "name": "ngx-super-select",
-  "version": "3.5.5",
+  "version": "3.5.6",
   "author": {
     "name": "Hesam Kashefi",
     "url": "https://hesamkashefi.com"
@@ -8,6 +8,8 @@
   "repository": {
     "url": "https://github.com/HesamKashefi/ngx-super-select"
   },
+  "homepage": "https://github.com/HesamKashefi/ngx-super-select#readme",
+  "description": "An advanced drop down for angular.",
   "keywords": [
     "NgxSuperSelect",
     "ngx-super-select",
@@ -23,11 +25,5 @@
     "select all",
     "angular"
   ],
-  "dependencies": {
-    "tslib": "^2.0.0",
-    "@angular/common": "^15.0.0",
-    "@angular/core": "^15.0.0",
-    "@angular/forms": "^15.0.0"
-  },
   "sideEffects": false
 }
