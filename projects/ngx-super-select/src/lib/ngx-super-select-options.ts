@@ -7,7 +7,7 @@ export class NgxSuperSelectOptions {
     enableDarkMode = false;
     selectionMode: 'single' | 'multiple' = 'multiple';
     enableChips: boolean = true;
-    searchEventDelay: number = 500;
+    searchChangedEventDelay: number = 500;
 
     /**
      * this value will be used when there is no item selected in single selection mode
@@ -25,5 +25,5 @@ export const NgxSuperSelectOptionsDefaults: NgxSuperSelectOptions = {
     selectionMode: 'multiple',
     singleSelectionModeDefaultValue: undefined,
     enableChips: true,
-    searchEventDelay:500,
+    searchChangedEventDelay: 500,
 };

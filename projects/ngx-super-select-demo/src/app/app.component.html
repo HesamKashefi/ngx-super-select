@@ -7,10 +7,12 @@
   </a>
 
   <h5>Primitive Type Data:</h5>
-  <ngx-super-select [dataSource]="[1,2,3]">
+  <ngx-super-select [dataSource]="[1,2,3]"
+                    (searchChanged)="onSearchChanged($event)">
 
   </ngx-super-select>
 
+  <p>Searched Term: {{ searchedTerm }}</p>
   <hr>
 
   <h5>Object Data:</h5>
