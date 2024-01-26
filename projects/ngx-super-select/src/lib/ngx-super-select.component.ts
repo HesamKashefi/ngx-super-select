@@ -14,6 +14,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   private _onTouch: any;
   private _onChange: any;
 
+
   writeValue(obj: any): void {
     if (Array.isArray(obj) && this.options.selectionMode === 'multiple') {
       this.selectedItemValues = obj;
@@ -72,6 +73,9 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   @Output()
   selectionChanged = new EventEmitter<any[]>();
 
+  @Output()
+  searchChanged = new EventEmitter<string>();
+
   /**
    * The state of the popup
    */
@@ -81,6 +85,16 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
    * the current searched phrase
    */
   searchText = '';
+
+  /**
+   * the latest searched phrase 
+   */
+  lastsearchText = '';
+
+  /**
+   * the timeout for searchbox event
+   */
+  timeout : any;
 
   /**
    * unique id of this instance
@@ -213,13 +227,23 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   getFilteredItems() {
+    var _self=this;
     const dataSource = this.dataSource;
     if (!Array.isArray(dataSource)) return [];
     const val = this.searchText.trim().toLocaleLowerCase();
     if (val === '') {
+      this.lastsearchText = '';
       return dataSource;
     }
     else {
+      if(this.timeout) clearTimeout(this.timeout);
+      this.timeout = setTimeout(function() {
+          // enter code here or a execute function.
+          if( _self.lastsearchText!=val){
+            _self.lastsearchText=val
+            _self.searchChanged.emit(val);
+          }
+      }, this.options.searchEventDelay);
       return dataSource.filter(x => this.getName(x).toLocaleLowerCase().indexOf(val) >= 0);
     }
   }
