@@ -94,7 +94,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   /**
    * the timeout for searchbox event
    */
-  timeout : any;
+  timeout: any;
 
   /**
    * unique id of this instance
@@ -227,7 +227,7 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
   }
 
   getFilteredItems() {
-    var _self=this;
+    const _self = this;
     const dataSource = this.dataSource;
     if (!Array.isArray(dataSource)) return [];
     const val = this.searchText.trim().toLocaleLowerCase();
@@ -236,14 +236,14 @@ export class NgxSuperSelectComponent implements ControlValueAccessor {
       return dataSource;
     }
     else {
-      if(this.timeout) clearTimeout(this.timeout);
-      this.timeout = setTimeout(function() {
-          // enter code here or a execute function.
-          if( _self.lastsearchText!=val){
-            _self.lastsearchText=val
-            _self.searchChanged.emit(val);
-          }
-      }, this.options.searchEventDelay);
+      if (this.timeout) clearTimeout(this.timeout);
+      this.timeout = setTimeout(function () {
+        // enter code here or a execute function.
+        if (_self.lastsearchText != val) {
+          _self.lastsearchText = val
+          _self.searchChanged.emit(val);
+        }
+      }, this.options.searchChangedEventDelay);
       return dataSource.filter(x => this.getName(x).toLocaleLowerCase().indexOf(val) >= 0);
     }
   }

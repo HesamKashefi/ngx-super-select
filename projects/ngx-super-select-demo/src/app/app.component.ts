@@ -52,4 +52,9 @@ export class AppComponent {
   }
 
   //#endregion single selection mode form
+
+  searchedTerm = '';
+  onSearchChanged(searchedTerm: string) {
+    this.searchedTerm = searchedTerm;
+  }
 }
