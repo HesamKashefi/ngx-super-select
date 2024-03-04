@@ -8,11 +8,16 @@
 
     <div *ngIf="selectedItemValues && options.enableChips"
          class="select-selected-items">
-        <span *ngFor="let item of selectedItemValues">{{ getNameForValue(item) }}</span>
+        <span *ngFor="let item of selectedItemValues"
+              [title]="getNameForValue(item)">
+            <p>{{ getNameForValue(item) }}</p>
+        </span>
     </div>
 
     <span *ngIf="selectedItemValues && selectedItemValues.length > 0 && options.selectionMode === 'multiple'"
-          class="selection-counter">{{ selectedItemValues.length }}</span>
+          class="selection-counter">
+        {{ selectedItemValues.length }}
+    </span>
 
     <div class="select-popup"
          [class.open]="isOpen"
@@ -54,6 +59,7 @@
                  class="select-option"
                  [class.selected]="isItemSelected(item)"
                  [class.disabled]="isItemDisabled(item)"
+                 [title]="getName(item)"
                  (click)="onItemClicked($event, item)">
                 {{ getName(item) }}
             </div>

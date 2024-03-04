@@ -83,7 +83,9 @@
         align-items: center;
         gap: 4px;
         margin: 0 8px;
-        overflow-x: hidden;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        height: 100%;
 
 
         span {
@@ -91,6 +93,16 @@
             padding: 4px;
             color: var(--text-color-light);
             background-color: var(--bg-secondary-color-light);
+            max-height: 95%;
+
+            p {
+                margin: 0;
+                padding: 0;
+                user-select: none;
+                text-wrap: nowrap;
+                white-space: nowrap;
+                overflow-y: hidden;
+            }
         }
     }
 
