@@ -81,11 +81,13 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        flex-wrap: wrap;
         gap: 4px;
         margin: 0 8px;
-        overflow-y: hidden;
-        overflow-x: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
         height: 100%;
+        padding: 4px;
 
 
         span {
