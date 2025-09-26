@@ -1,39 +1,31 @@
-* {
-    --text-color-dark: #fff;
-    --text-color-light: #000000;
+.select-box:not(.dark) {
+    --text-color: #000000;
+    --shadow-color: #d7d7d7;
+    --btn-primary-color: rgb(0, 115, 255);
+    --text-secondary-color: #4d4d4d;
+    --text-disabled-color: #8c8c8c;
+    --border-color: #bebebe;
+    --bg-color: #fff;
+    --bg-secondary-color: #ececec;
+    --selection-bg-color: #f3f3f3;
+    --selection-bg-hover-color: #f0f0f0;
+    --selection-indicator-color: #858585;
+    --selection-disabled-indicator-color: #bebebe;
+}
 
-    --shadow-color-dark: #383838;
-    --shadow-color-light: #d7d7d7;
-
-    --btn-primary-color-light: rgb(0, 115, 255);
-    --btn-primary-color-dark: rgb(255, 213, 51);
-
-    --text-secondary-color-dark: #dfdfdf;
-    --text-secondary-color-light: #4d4d4d;
-
-    --text-disabled-color-dark: #8c8c8c;
-    --text-disabled-color-light: #8c8c8c;
-
-    --border-color-dark: #505050;
-    --border-color-light: #bebebe;
-
-    --bg-color-dark: #222222;
-    --bg-color-light: #fff;
-
-    --bg-secondary-color-dark: #3b3b3b;
-    --bg-secondary-color-light: #ececec;
-
-    --selection-bg-color-dark: #2c2c2c75;
-    --selection-bg-color-light: #f3f3f3;
-
-    --selection-bg-hover-color-dark: #3d3d3d;
-    --selection-bg-hover-color-light: #f0f0f0;
-
-    --selection-indicator-color-dark: #bbbbbb;
-    --selection-indicator-color-light: #858585;
-
-    --selection-disabled-indicator-color-dark: #6e6e6e;
-    --selection-disabled-indicator-color-light: #bebebe;
+.select-box.dark {
+    --text-color: #fff;
+    --shadow-color: #383838;
+    --btn-primary-color: rgb(255, 213, 51);
+    --text-secondary-color: #dfdfdf;
+    --text-disabled-color: #8c8c8c;
+    --border-color: #505050;
+    --bg-color: #222222;
+    --bg-secondary-color: #3b3b3b;
+    --selection-bg-color: #2c2c2c75;
+    --selection-bg-hover-color: #3d3d3d;
+    --selection-indicator-color: #bbbbbb;
+    --selection-disabled-indicator-color: #6e6e6e;
 }
 
 * {
@@ -42,7 +34,7 @@
 
 .select-box {
     cursor: pointer;
-    height: 40px;
+    height: 2.5rem;
 
     position: relative;
 
@@ -55,24 +47,24 @@
 
     transition-duration: 0.2s;
 
-    border-radius: 4px;
-    border: 1px solid var(--border-color-light);
-    background-color: var(--bg-color-light);
+    border-radius: 0.2rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
 
     >span {
         user-select: none;
-        color: var(--text-secondary-color-light);
+        color: var(--text-secondary-color);
     }
 
     &.open {
-        min-width: 300px;
+        min-width: 19rem;
     }
 
     &.disabled {
         cursor: not-allowed;
 
         >span {
-            color: var(--text-disabled-color-light);
+            color: var(--text-disabled-color);
         }
     }
 
@@ -81,20 +73,19 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 4px;
-        margin: 0 8px;
-        overflow-y: auto;
-        overflow-x: hidden;
+        gap: 0.2rem;
+        margin: 0 0.5rem;
+        overflow-x: auto;
+        overflow-y: hidden;
         height: 100%;
-        padding: 4px;
+        padding: 0.2rem;
 
 
         span {
-            border-radius: 4px;
-            padding: 4px;
-            color: var(--text-color-light);
-            background-color: var(--bg-secondary-color-light);
+            border-radius: 0.2rem;
+            padding: 0.2rem;
+            color: var(--text-color);
+            background-color: var(--bg-secondary-color);
             max-height: 95%;
 
             p {
@@ -110,7 +101,7 @@
 
     .selection-counter {
         grid-column: 3;
-        margin: 0 8px;
+        margin: 0 0.5rem;
         color: red;
     }
 }
@@ -120,10 +111,10 @@
     display: none;
     padding: 0.5rem 0;
     overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 0 2px 2px var(--shadow-color-light);
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.1rem 0.1rem var(--shadow-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
 
     hr {
         margin: 0.5rem;
@@ -134,7 +125,7 @@
         display: grid;
         grid-template-rows: auto 1fr;
         width: 100%;
-        max-height: 400px;
+        max-height: 25rem;
 
         z-index: 1000;
 
@@ -147,18 +138,18 @@
         width: 100%;
 
         input[type=text] {
-            width: calc(100% - 8px);
-            margin: 0 4px;
+            width: calc(100% - 0.5rem);
+            margin: 00.2rem;
             padding: .25rem .5rem;
             font-size: .875rem;
-            border-radius: 4px;
+            border-radius: 0.2rem;
             border: 1px solid #dee2e6;
             font-weight: 400;
             line-height: 1.5;
 
-            color: var(--text-color-light);
-            background-color: var(--bg-secondary-color-light);
-            border-color: var(--border-color-light);
+            color: var(--text-color);
+            background-color: var(--bg-secondary-color);
+            border-color: var(--border-color);
         }
     }
 
@@ -173,7 +164,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 4px;
+    gap: 0.2rem;
     width: 100%;
 }
 
@@ -187,7 +178,7 @@
 
     &.selected {
         position: relative;
-        background-color: var(--selection-bg-color-light);
+        background-color: var(--selection-bg-color);
 
         &::before {
             content: ' ';
@@ -195,112 +186,40 @@
             left: 2px;
             top: 10%;
             display: inline-block;
-            width: 4px;
+            width: 0.2rem;
             height: 80%;
-            background-color: var(--selection-indicator-color-light);
+            background-color: var(--selection-indicator-color);
         }
     }
 
     &.disabled {
         cursor: not-allowed;
-        color: var(--text-disabled-color-light);
+        color: var(--text-disabled-color);
 
         &::before {
-            background-color: var(--selection-disabled-indicator-color-light);
+            background-color: var(--selection-disabled-indicator-color);
         }
     }
 
     &:hover:not(.disabled) {
-        background-color: var(--selection-bg-hover-color-light);
+        background-color: var(--selection-bg-hover-color);
     }
 }
 
 .btn {
-    padding: 4px;
+    padding: 0.2rem;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 0.2rem;
     background: transparent;
 
     &.btn-outline-primary {
-        color: var(--btn-primary-color-light);
-        border: 1px solid var(--btn-primary-color-light);
+        color: var(--btn-primary-color);
+        border: 1px solid var(--btn-primary-color);
     }
 
     &.btn-outline-danger {
         color: rgb(254, 59, 59);
         border: 1px solid rgb(254, 59, 59);
-    }
-}
-
-
-.dark {
-    &.select-box {
-        border: 1px solid var(--border-color-dark);
-        background-color: var(--bg-color-dark);
-
-        >span {
-            color: var(--text-secondary-color-dark);
-        }
-
-        .selection-counter {
-            color: red;
-        }
-
-        &.disabled {
-            >span {
-                color: var(--text-disabled-color-dark);
-            }
-        }
-
-        .select-selected-items {
-            span {
-                color: var(--text-color-dark);
-                background-color: var(--bg-secondary-color-dark);
-            }
-        }
-
-        .select-popup {
-            background-color: var(--bg-color-dark);
-            box-shadow: 0 0 2px 2px var(--shadow-color-dark);
-            color: var(--text-color-dark);
-
-            .select-popup-control-panel {
-                input[type=text] {
-                    color: var(--text-color-dark);
-                    background-color: var(--bg-secondary-color-dark);
-                    border-color: var(--border-color-dark);
-                }
-            }
-        }
-
-        .select-option {
-            &.selected {
-                background-color: var(--selection-bg-color-dark);
-
-                &::before {
-                    background-color: var(--selection-indicator-color-dark);
-                }
-            }
-
-            &.disabled {
-                color: var(--text-disabled-color-dark);
-
-                &::before {
-                    background-color: var(--selection-disabled-indicator-color-dark);
-                }
-            }
-
-            &:hover:not(.disabled) {
-                background-color: var(--selection-bg-hover-color-dark);
-            }
-        }
-    }
-
-    .btn {
-        &.btn-outline-primary {
-            color: var(--btn-primary-color-dark);
-            border: 1px solid var(--btn-primary-color-dark);
-        }
     }
 }
