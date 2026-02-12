@@ -28,16 +28,16 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/ng-super-select/tsconfig.lib.json"
+      "path": "./projects/ngx-super-select/tsconfig.lib.json"
     },
     {
-      "path": "./projects/ng-super-select/tsconfig.spec.json"
+      "path": "./projects/ngx-super-select/tsconfig.spec.json"
     },
     {
-      "path": "./projects/ng-super-select-demo/tsconfig.app.json"
+      "path": "./projects/ngx-super-select-demo/tsconfig.app.json"
     },
     {
-      "path": "./projects/ng-super-select-demo/tsconfig.spec.json"
+      "path": "./projects/ngx-super-select-demo/tsconfig.spec.json"
     }
   ]
 }
