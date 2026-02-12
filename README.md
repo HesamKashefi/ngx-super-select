@@ -32,13 +32,13 @@ This is a single/multiple choice drop down for Angular with search and other fea
 
 ## Add Imports
 
-in the `app.module.ts` file import `NgxSuperSelectModule` like this:
+in the `app.module.ts` or your `component` file import `NgxSuperSelectComponent` like this:
 
 ```
 
   imports: [
     ...
-    NgxSuperSelectModule
+    NgxSuperSelectComponent
   ]
 
 ```
