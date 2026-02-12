@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { NgxSuperSelectOptions } from 'ngx-super-select';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSuperSelectComponent, NgxSuperSelectOptions } from 'ngx-super-select';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports: [FormsModule, ReactiveFormsModule, NgxSuperSelectComponent]
 })
 export class AppComponent {
   data: { id: number, name: string }[] = [
