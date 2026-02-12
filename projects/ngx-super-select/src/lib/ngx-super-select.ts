@@ -1,12 +1,13 @@
 import { Component, EventEmitter, HostListener, Input, Output, forwardRef } from '@angular/core';
 import { NgxSuperSelectOptions, NgxSuperSelectOptionsDefaults } from './ngx-super-select-options';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxSuperSelectService } from './ngx-super-select.service';
 
 @Component({
   selector: 'ngx-super-select',
-  templateUrl: './ngx-super-select.component.html',
-  styleUrls: ['./ngx-super-select.component.scss'],
+  templateUrl: './ngx-super-select.html',
+  styleUrls: ['./ngx-super-select.scss'],
+  imports: [FormsModule],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxSuperSelectComponent), multi: true }],
 })
 export class NgxSuperSelectComponent implements ControlValueAccessor {
